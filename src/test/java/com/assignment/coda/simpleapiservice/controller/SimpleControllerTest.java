@@ -19,12 +19,22 @@ class SimpleControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void postSimpleValidJson_returnSuccess () throws Exception {
-        String jsonPayload = "{test1:1, test2:2.0, test3: 'tmp', test4: []}";
+    public void postSimpleValidJson_returnSuccess() throws Exception {
+        String jsonPayload = "{\"test1\":1, \"test2\":2.0, \"test3\": \"tmp\", \"test4\": []}";
         mockMvc.perform(post("/simples")
                 .contentType(MediaType.TEXT_PLAIN)
                 .content(jsonPayload))
                 .andExpect(status().isOk())
                 .andExpect(content().string(jsonPayload));
+    }
+
+    @Test
+    public void postSimpleInvalidJson_returnBadRequest() throws Exception {
+        String textPayload = "abcd1234";
+        mockMvc.perform(post("/simples")
+                .contentType(MediaType.TEXT_PLAIN)
+                .content(textPayload))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string(textPayload));
     }
 }

@@ -1,10 +1,13 @@
 package com.assignment.coda.simpleapiservice.controller;
 
+import com.assignment.coda.simpleapiservice.util.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SimpleController {
@@ -15,8 +18,11 @@ public class SimpleController {
             value = "/simples",
             method = RequestMethod.POST,
             consumes = "text/plain")
-    public String processPayload (@RequestBody String payload) {
+    public ResponseEntity<String> processPayload(@RequestBody String payload) {
         logger.info(payload);
-        return payload;
+        if (JsonUtils.isValid(payload)) {
+            return ResponseEntity.ok(payload);
+        }
+        return ResponseEntity.badRequest().body(payload);
     }
 }
