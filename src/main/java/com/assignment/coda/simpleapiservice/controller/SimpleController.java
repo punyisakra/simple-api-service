@@ -19,10 +19,12 @@ public class SimpleController {
             method = RequestMethod.POST,
             consumes = "text/plain")
     public ResponseEntity<String> processPayload(@RequestBody String payload) {
-        logger.info(payload);
-        if (JsonUtils.isValid(payload)) {
-            return ResponseEntity.ok(payload);
-        }
-        return ResponseEntity.badRequest().body(payload);
+        logger.info("{} /simples, REQUEST PAYLOAD: {}", RequestMethod.POST, payload);
+        ResponseEntity<String> response;
+        response = JsonUtils.isValid(payload)
+                ? ResponseEntity.ok(payload)
+                : ResponseEntity.badRequest().body(payload);
+        logger.info("RESPONSE: {}", response.getStatusCode());
+        return response;
     }
 }
