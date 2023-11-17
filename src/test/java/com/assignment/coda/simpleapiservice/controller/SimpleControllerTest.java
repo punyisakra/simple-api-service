@@ -1,40 +1,41 @@
 package com.assignment.coda.simpleapiservice.controller;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@ExtendWith(SpringExtension.class)
 class SimpleControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+    @InjectMocks
+    private SimpleController simpleController;
 
     @Test
-    public void postSimpleValidJson_returnSuccess() throws Exception {
-        String jsonPayload = "{\"test1\":1, \"test2\":2.0, \"test3\": \"tmp\", \"test4\": []}";
-        mockMvc.perform(post("/simples")
-                .contentType(MediaType.TEXT_PLAIN)
-                .content(jsonPayload))
-                .andExpect(status().isOk())
-                .andExpect(content().string(jsonPayload));
+    public void processPayload_validJson_returnSuccess() {
+        String payload = "{\"test1\":1, \"test2\":2.0, \"test3\": \"tmp\", \"test4\": []}";
+
+        ResponseEntity<String> response = simpleController.processPayload(payload);
+
+        assertThat(response, notNullValue());
+        assertThat(response.getStatusCode(), is(HttpStatus.OK));
+        assertThat(response.getBody(), is(payload));
     }
 
     @Test
-    public void postSimpleInvalidJson_returnBadRequest() throws Exception {
-        String textPayload = "abcd1234";
-        mockMvc.perform(post("/simples")
-                .contentType(MediaType.TEXT_PLAIN)
-                .content(textPayload))
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string(textPayload));
+    public void processPayload_invalidJson_returnBadRequest() {
+        String payload = "abcd1234";
+
+        ResponseEntity<String> response = simpleController.processPayload(payload);
+
+        assertThat(response, notNullValue());
+        assertThat(response.getStatusCode(), is(HttpStatus.BAD_REQUEST));
+        assertThat(response.getBody(), is(payload));
     }
 }
