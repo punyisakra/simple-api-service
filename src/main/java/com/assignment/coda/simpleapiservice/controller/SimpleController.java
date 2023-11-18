@@ -3,6 +3,7 @@ package com.assignment.coda.simpleapiservice.controller;
 import com.assignment.coda.simpleapiservice.util.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ public class SimpleController {
     @RequestMapping(
             value = "/simples",
             method = RequestMethod.POST,
-            consumes = "text/plain")
+            consumes = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> processPayload(@RequestBody String payload) {
         logger.info("{} /simples, REQUEST PAYLOAD: {}", RequestMethod.POST, payload);
         ResponseEntity<String> response;
