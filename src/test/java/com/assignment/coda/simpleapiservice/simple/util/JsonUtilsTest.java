@@ -1,4 +1,4 @@
-package com.assignment.coda.simpleapiservice.util;
+package com.assignment.coda.simpleapiservice.simple.util;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;

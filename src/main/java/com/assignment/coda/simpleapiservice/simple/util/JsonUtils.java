@@ -1,4 +1,4 @@
-package com.assignment.coda.simpleapiservice.util;
+package com.assignment.coda.simpleapiservice.simple.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

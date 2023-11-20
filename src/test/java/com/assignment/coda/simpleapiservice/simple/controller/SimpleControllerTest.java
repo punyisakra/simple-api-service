@@ -1,4 +1,4 @@
-package com.assignment.coda.simpleapiservice.controller;
+package com.assignment.coda.simpleapiservice.simple.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

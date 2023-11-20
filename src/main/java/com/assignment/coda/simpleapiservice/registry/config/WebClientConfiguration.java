@@ -1,4 +1,4 @@
-package com.assignment.coda.simpleapiservice.config;
+package com.assignment.coda.simpleapiservice.registry.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

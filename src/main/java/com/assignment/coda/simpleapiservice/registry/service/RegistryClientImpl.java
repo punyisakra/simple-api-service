@@ -1,6 +1,6 @@
-package com.assignment.coda.simpleapiservice.service;
+package com.assignment.coda.simpleapiservice.registry.service;
 
-import com.assignment.coda.simpleapiservice.model.Instance;
+import com.assignment.coda.simpleapiservice.registry.model.Instance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

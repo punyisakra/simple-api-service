@@ -1,6 +1,6 @@
-package com.assignment.coda.simpleapiservice.controller;
+package com.assignment.coda.simpleapiservice.simple.controller;
 
-import com.assignment.coda.simpleapiservice.util.JsonUtils;
+import com.assignment.coda.simpleapiservice.simple.util.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
