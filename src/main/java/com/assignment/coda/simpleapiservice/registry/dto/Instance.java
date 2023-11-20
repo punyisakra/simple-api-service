@@ -1,4 +1,4 @@
-package com.assignment.coda.simpleapiservice.registry.model;
+package com.assignment.coda.simpleapiservice.registry.dto;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

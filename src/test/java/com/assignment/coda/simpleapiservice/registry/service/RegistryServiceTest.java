@@ -1,6 +1,6 @@
 package com.assignment.coda.simpleapiservice.registry.service;
 
-import com.assignment.coda.simpleapiservice.registry.model.Instance;
+import com.assignment.coda.simpleapiservice.registry.dto.Instance;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
