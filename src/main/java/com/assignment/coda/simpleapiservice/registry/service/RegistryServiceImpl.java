@@ -7,6 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * A service class providing an implementation to {@link RegistryService}
+ * to handle registry's call logic
+ */
 @Service
 public class RegistryServiceImpl implements RegistryService {
 
@@ -19,6 +23,12 @@ public class RegistryServiceImpl implements RegistryService {
         this.registryClient = registryClient;
     }
 
+    /**
+     * Register the application's name and port number with the registry-service.
+     * If the name and/or the port number is blank then the registry process is skipped.
+     * @param name a {@link String} represented the running application's name
+     * @param port a port number of the running application
+     */
     @Override
     public void register(String name, int port) {
         if (Strings.isBlank(name) || port == 0) {

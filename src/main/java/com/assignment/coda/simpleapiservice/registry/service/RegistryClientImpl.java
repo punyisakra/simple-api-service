@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+/**
+ * A client class providing an implementation to {@link RegistryClient}
+ * to connect to registry-service
+ */
 @Service
 public class RegistryClientImpl implements RegistryClient {
 
@@ -20,6 +24,11 @@ public class RegistryClientImpl implements RegistryClient {
         this.webClient = webClient;
     }
 
+    /**
+     * Register the input instance with registry-service by POST to the registry API asynchronously
+     * @param instance an application instance of type {@link Instance} to be registered
+     * @return registered result in {@link String}, wrapped in {@link Mono}
+     */
     @Override
     public Mono<String> register(Instance instance) {
         logger.info("Register this instance with registry-service: {}", instance);

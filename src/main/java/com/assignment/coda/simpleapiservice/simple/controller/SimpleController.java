@@ -10,11 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Simple API Controller for handle simple HTTP request
+ * */
 @RestController
 public class SimpleController {
 
     private final Logger logger = LoggerFactory.getLogger(SimpleController.class);
 
+    /**
+     * Simple POST API: accept json payload and return the exact copy of it.
+     * Will return {@link org.springframework.http.HttpStatus} 400: Bad Request if
+     * the input payload is an invalid json
+     *
+     * @param payload   the json payload of type {@link String}
+     * @return the exact copy of the input payload, wrapped with HttpStatus
+     * */
     @RequestMapping(
             value = "/simples",
             method = RequestMethod.POST,

@@ -7,6 +7,9 @@ import org.springframework.boot.web.servlet.context.ServletWebServerInitializedE
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+/**
+ * Handle application event to retrieve web server information
+ */
 @Service
 public class ApplicationEventHandler {
 
@@ -20,6 +23,12 @@ public class ApplicationEventHandler {
         this.registryService = registryService;
     }
 
+    /**
+     * Retrieve running port number and register the application with registry-service
+     * @param event a {@link ServletWebServerInitializedEvent} generated after initialize
+     *              the web server. It holds {@link org.springframework.boot.web.server.WebServer}
+     *              information such as the running port number
+     */
     @EventListener
     public void onApplicationEvent(final ServletWebServerInitializedEvent event) {
         int port = event.getWebServer().getPort();
