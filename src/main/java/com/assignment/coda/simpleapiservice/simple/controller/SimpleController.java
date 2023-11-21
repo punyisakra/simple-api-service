@@ -20,7 +20,7 @@ public class SimpleController {
 
     /**
      * Simple POST API: accept json payload and return the exact copy of it.
-     * Will return {@link org.springframework.http.HttpStatus} 400: Bad Request if
+     * Will return {@link org.springframework.http.HttpStatus HttpStatus} 400: Bad Request if
      * the input payload is an invalid json
      *
      * @param payload   the json payload of type {@link String}
