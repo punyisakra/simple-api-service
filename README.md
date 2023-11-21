@@ -26,9 +26,11 @@ sequenceDiagram
 sequenceDiagram
     participant simple-api-service
     participant registry-service
+    participant routing-service
     simple-api-service->>simple-api-service: handle application event when initialized
     simple-api-service->>registry-service: POST: /registries {application name, port}
     registry-service->>registry-service: add application to registry list
+    registry-service->>routing-service: publish "add" event
     registry-service->>simple-api-service: HTTP Response 200: OK {"success"}
 ```
 
